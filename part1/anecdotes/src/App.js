@@ -26,31 +26,24 @@ function App() {
     setSelected(randNum)
   }
 
-  
   const handleVote = () => {
 		const allVotes = [...vote];
 		allVotes[selected] += 1;
 		setVote(allVotes);
 	};
 
-  // const mostVotes = (vote) => {
-  //     let max = 0
-  //     let index = 0
+  function mostVotes (Vote) {
+    let high = 0
+    let index = 0
 
-  //    for (let i = 0; i < anecdotes.length; i++) {
-  //       if (vote[i] > max) {
-  //         max = vote[i]
-  //         index = i
-
-  //       }
-        
-  //       return index
-      
-  //   }
-  // }
-
-
-  console.log(vote)
+    for (let i = 0; i < 6; i++){
+      if (vote[i] > high) {
+        high = vote[i]
+        index = i
+      }
+    }
+    return index
+  }
 
   return (
     <div className="App"> 
@@ -59,7 +52,9 @@ function App() {
     {vote[selected] === 0 ? null : <p>has {vote[selected]} votes</p>}
     <button onClick={handleVote}>Vote</button>
     <button onClick={clicked}>Next Anecdotes</button>
-    {/* <p>{anecdotes[mostVotes(vote)]}</p> */}
+    <h2>Anecdote with most votes</h2>
+    <p>{anecdotes[mostVotes(vote)]}</p>
+    <span>{vote[mostVotes(vote)]}</span>
 
     
     </div>
