@@ -16,8 +16,6 @@ function App() {
     setPersons([...persons])
   }
 
-  console.log(persons)
-
   return (
     <div className="App"> 
     <h2>Phonebook</h2>
