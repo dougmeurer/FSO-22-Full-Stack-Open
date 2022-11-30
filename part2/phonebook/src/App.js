@@ -6,7 +6,6 @@ function App() {
     { name: 'Arto Hellas' }
   ]) 
 
-
   function handleChange(e) {
     setPersons({...persons, [e.target.name]: e.target.value})
   }
