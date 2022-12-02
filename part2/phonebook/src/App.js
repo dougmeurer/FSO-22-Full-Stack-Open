@@ -2,34 +2,33 @@ import { useState } from "react";
 
 function App() {
 
-  const [persons, setPersons] = useState([
-    { name: 'Arto Hellas' }
-  ]) 
+  const [persons, setPersons] = useState([]) 
 
+  const [newName, setNewName] = useState({name: ""})
 
-  function handleChange(e) {
-    setPersons({...persons, [e.target.name]: e.target.value})
+  function handleChange(e) {  
+    setNewName({...newName, [e.target.name]: e.target.value})
   }
 
   function handleSubmit(e) {
     e.preventDefault()
-    setPersons([...persons])
+    setPersons(persons => [...persons, newName])  
   }
-
-  console.log(persons)
 
   return (
     <div className="App"> 
     <h2>Phonebook</h2>
       <form onSubmit={handleSubmit}>
         <div>
-          name: <input value={persons.name} onChange={handleChange}/>
+          name: <input name="name" value={newName.name} onChange={handleChange}/>
         </div>
         <div>
           <button type="submit">add</button>
         </div>
       </form>
-      <p>{persons[0].name}</p>
+      {persons.map(cE => {
+        return <p>{cE.name}</p>
+      })}
      
     </div>
   );
