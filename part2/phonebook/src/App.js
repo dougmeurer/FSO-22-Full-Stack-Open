@@ -26,8 +26,8 @@ function App() {
           <button type="submit">add</button>
         </div>
       </form>
-      {persons.map(cE => {
-        return <p>{cE.name}</p>
+      {persons.map((cE, i) => {
+        return cE.name[i].includes(cE.name[i]) ? null : <p>{cE.name}</p>
       })}
      
     </div>
